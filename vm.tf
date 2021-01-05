@@ -1,24 +1,24 @@
 resource "azurerm_resource_group" "myterraformgroup" {
-  name     = "${var.prefix}-resources"
+  name     = "MyResourcegroup"
   location = "East US"
 }
 
 resource "azurerm_virtual_network" "myterraformnetwork" {
-  name                = "${var.prefix}-network"
+  name                = "MyVnetwork"
   address_space       = ["10.0.0.0/16"]
   location            = azurerm_resource_group.myterraformgroup.location
   resource_group_name = azurerm_resource_group.myterraformgroup.name
 }
 
 resource "azurerm_subnet" "myterraformsubnet" {
-  name                 = "internal"
+  name                 = "Mysubnet"
   resource_group_name  = azurerm_resource_group.myterraformgroup.name
   virtual_network_name = azurerm_virtual_network.myterraformgroup.name
   address_prefixes     = ["10.0.2.0/24"]
 }
 
 resource "azurerm_network_interface" "myterraformNIC" {
-  name                = "${var.prefix}-nic"
+  name                = "Mynic"
   location            = azurerm_resource_group.myterraformgroup.location
   resource_group_name = azurerm_resource_group.myterraformgroup.name
 
@@ -30,7 +30,7 @@ resource "azurerm_network_interface" "myterraformNIC" {
 }
 
 resource "azurerm_virtual_machine" "main" {
-  name                  = "${var.prefix}-vm"
+  name                  = "Myvm"
   location              = azurerm_resource_group.myterraformgroup.location
   resource_group_name   = azurerm_resource_group.myterraformgroup.name
   network_interface_ids = [azurerm_network_interface.myterraformgroup.id]
