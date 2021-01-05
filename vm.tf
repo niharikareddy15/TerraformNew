@@ -24,7 +24,7 @@ resource "azurerm_network_interface" "myterraformNIC" {
 
   ip_configuration {
     name                          = "testconfiguration1"
-    subnet_id                     = azurerm_subnet.internal.id
+    subnet_id                     = azurerm_subnet.myterraformsubnet.id
     private_ip_address_allocation = "Dynamic"
   }
 }
@@ -33,7 +33,7 @@ resource "azurerm_virtual_machine" "main" {
   name                  = "Myvm"
   location              = azurerm_resource_group.myterraformgroup.location
   resource_group_name   = azurerm_resource_group.myterraformgroup.name
-  network_interface_ids = [azurerm_network_interface.myterraformgroup.id]
+  network_interface_ids = [azurerm_network_interface.myterraformNIC.id]
   vm_size               = "Standard_DS1_v2"
 
   # Uncomment this line to delete the OS disk automatically when deleting the VM
