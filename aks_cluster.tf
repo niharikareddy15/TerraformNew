@@ -15,6 +15,10 @@ default_node_pool {
     vm_size    = "Standard_D2_v2"
   }
 
+identity {
+    type = "SystemAssigned"
+  }
+  
   tags = {
     Environment = "Production"
   }
