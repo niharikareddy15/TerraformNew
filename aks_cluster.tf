@@ -14,7 +14,8 @@ default_node_pool {
     node_count = 2
     vm_size    = "Standard_D2_v2"
   }
-  tags {
+
+  tags = {
     Environment = "Production"
   }
 }
