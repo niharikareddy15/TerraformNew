@@ -1,6 +1,6 @@
 resource "azurerm_resource_group" "k8s" {
   name     = "aks_rg"
-  location = "East US"
+  location = "South Central US"
 }
 
 resource "azurerm_kubernetes_cluster" "k8s" {
@@ -18,7 +18,7 @@ default_node_pool {
 identity {
     type = "SystemAssigned"
   }
-  
+
   tags = {
     Environment = "Production"
   }
