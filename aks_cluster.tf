@@ -1,6 +1,6 @@
 resource "azurerm_resource_group" "k8s" {
   name     = "aks_rg"
-  location = "eastus"
+  location = "East US"
 }
 
 resource "azurerm_kubernetes_cluster" "k8s" {
